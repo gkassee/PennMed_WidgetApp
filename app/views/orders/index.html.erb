@@ -1,0 +1,15 @@
+<h1>Widgets! Widgets! Widgets!</h1>
+
+<%= form_for @order do |f| %>
+	<div><span>Widget Type:</span> <%= f.select :widget_type, ['Widget', 'Widget Pro', 'Widget Xtreme'], { :include_blank => '-- Select One --' }, :required => true %></div>
+	<div><span>Color:</span> <%= f.select :widget_color, ['Red', 'Blue', 'Yellow'], { :include_blank => '-- Select One --' }, :required => true %></div>
+	<div><span>Quantity:</span> <%= f.number_field :widget_qty, required: true, min: 1 %></div>
+	<div><span>Date Needed By:</span> <%= f.date_field :widget_needed, min: Date.today + 7, required: true  %></div>
+	<div><%= f.submit "PLACE ORDER", :class => 'submit_button' %></div>
+<% end %>
+
+<% if flash[:notice] %>
+		<div class="notice">
+			<%=flash[:notice] %>
+		</div>
+<% end %>
